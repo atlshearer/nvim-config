@@ -45,6 +45,14 @@ return {
                     })
                 end
             })
+
+            require("lspconfig").texlab.setup({
+                texlab = {
+                    build = {
+                        onSave = true
+                    }
+                }
+            })
         end
     },
     {

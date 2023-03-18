@@ -4,6 +4,7 @@ return {
         "hrsh7th/nvim-cmp",
         config = function()
             local cmp = require("cmp")
+            local lspkind = require("lspkind")
 
             cmp.setup({
                 -- Enable LSP snippets
@@ -41,18 +42,31 @@ return {
                 },
                 formatting = {
                     fields = { 'menu', 'abbr', 'kind' },
-                    format = function(entry, item)
-                        local menu_icon = {
-                            nvim_lsp = 'λ',
-                            buffer = 'Ω',
-                            path = '🖫',
-                        }
-                        item.menu = menu_icon[entry.source.name]
-                        return item
-                    end,
+                    -- format = function(entry, item)
+                    --     local menu_icon = {
+                    --         nvim_lsp = 'λ',
+                    --         buffer = 'Ω',
+                    --         path = '🖫',
+                    --     }
+                    --     item.menu = menu_icon[entry.source.name]
+                    --     return item
+                    -- end,
+                    format = lspkind.cmp_format({
+                        mode = 'symbol_text',  -- show only symbol annotations
+                        maxwidth = 50,         -- prevent the popup from showing more than provided characters (e.g 50 will not show more than 50 characters)
+                        ellipsis_char = '...', -- when popup menu exceed maxwidth, the truncated part would show ellipsis_char instead (must define maxwidth first)
+                        -- The function below will be called before any actual modifications from lspkind
+                        -- so that you can provide more controls on popup customization. (See [#30](https://github.com/onsails/lspkind-nvim/pull/30))
+                        before = function(_, vim_item)
+                            return vim_item
+                        end
+                    })
                 },
             })
         end,
+        dependencies = {
+            "onsails/lspkind.nvim",
+        }
     },
     -- LSP source
     'hrsh7th/cmp-nvim-lsp',
@@ -64,6 +78,8 @@ return {
     'hrsh7th/cmp-nvim-lsp-signature-help',
     -- Yes
     "hrsh7th/vim-vsnip",
+
+    "github/copilot.vim",
 
     -- Automatically adding brackets
     {
