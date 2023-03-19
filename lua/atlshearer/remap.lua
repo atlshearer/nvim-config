@@ -40,4 +40,6 @@ nnoremap("<leader>fh", "<cmd>Telescope help_tags<CR>")
 -- Language Server Hotkeys
 nnoremap("K", vim.lsp.buf.hover)
 nnoremap("<c-k>", vim.lsp.buf.signature_help)
+nnoremap("gD", vim.lsp.buf.implementation)
+nnoremap("gd", vim.lsp.buf.definition)
 nnoremap("gR", vim.lsp.buf.rename)
