@@ -5,7 +5,11 @@ return {
             "nvim-tree/nvim-web-devicons"
         },
         config = function()
-            require("nvim-tree").setup()
+            require("nvim-tree").setup({
+                view = {
+                    width = 50
+                }
+            })
         end
     },
     {
@@ -83,7 +87,7 @@ return {
             theme = "snow",
             screensaver = 1000 * 60 * 1,
             max = 100,
-            interval = 200,
+            interval = 1000,
         }
     }
 }
