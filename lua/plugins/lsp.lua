@@ -53,6 +53,12 @@ return {
                     }
                 }
             })
+
+            require("lspconfig").gradle_ls.setup({
+                filetypes = { "groovy", "kotlin" }
+            })
+
+            require("lspconfig").kotlin_language_server.setup({})
         end
     },
     {
