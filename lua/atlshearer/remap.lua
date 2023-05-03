@@ -12,7 +12,9 @@ nnoremap("<leader>bp", "<cmd>BufferPick<CR>")
 nnoremap("<leader>bc", "<cmd>BufferClose<CR>")
 nnoremap("<A-/>", "<cmd>BufferClose<CR>")
 nnoremap("<A-.>", "<cmd>BufferNext<CR>")
+nnoremap("≥", "<cmd>BufferNext<CR>")
 nnoremap("<A-,>", "<cmd>BufferPrevious<CR>")
+nnoremap("≤", "<cmd>BufferPrevious<CR>")
 nnoremap("<leader>1", "<cmd>BufferGoto 1<CR>")
 nnoremap("<leader>2", "<cmd>BufferGoto 2<CR>")
 nnoremap("<leader>3", "<cmd>BufferGoto 3<CR>")
@@ -25,7 +27,9 @@ nnoremap("<leader>9", "<cmd>BufferGoto 9<CR>")
 
 -- Comment Line
 nnoremap("<C-_>", "<Plug>(comment_toggle_linewise_current)")
+nnoremap("<C-/>", "<Plug>(comment_toggle_linewise_current)")
 vnoremap("<C-_>", "<Plug>(comment_toggle_linewise_visual)")
+vnoremap("<C-/>", "<Plug>(comment_toggle_linewise_visual)")
 
 -- Trouble Toggle
 nnoremap("<leader>xx", "<cmd>TroubleToggle<CR>")
