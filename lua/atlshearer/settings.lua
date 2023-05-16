@@ -15,8 +15,7 @@ vim.opt.expandtab = true
 vim.opt.hlsearch = false
 vim.opt.incsearch = true
 
-vim.opt.autoindent = true
-vim.opt.smartindent = false
+vim.opt.smartindent = true
 
 vim.g.mapleader = " "
 
