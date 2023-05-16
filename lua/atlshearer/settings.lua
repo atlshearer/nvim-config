@@ -15,7 +15,8 @@ vim.opt.expandtab = true
 vim.opt.hlsearch = false
 vim.opt.incsearch = true
 
-vim.opt.smartindent = true
+vim.opt.autoindent = true
+vim.opt.smartindent = false
 
 vim.g.mapleader = " "
 
@@ -47,6 +48,10 @@ vim.diagnostic.config({
     },
 })
 
+-- Enable spell check
+vim.opt.spell = true
+vim.opt.spelllang = 'en_au'
+
 -- Fixed column for diagnostics to appear
 -- Show autodiagnostic popup on cursor hover_range
 -- Goto previous / next diagnostic warning / error
@@ -57,7 +62,7 @@ autocmd CursorHold * lua vim.diagnostic.open_float(nil, { focusable = false })
 ]])
 
 -- Auto Formatting
--- vim.cmd [[autocmd BufWritePre * lua vim.lsp.buf.format()]]
+vim.cmd [[autocmd BufWritePre * lua vim.lsp.buf.format()]]
 
 -- Set hight of the command window to zero
 vim.o.cmdheight = 0

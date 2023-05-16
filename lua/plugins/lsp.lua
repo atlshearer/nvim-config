@@ -2,12 +2,7 @@ return {
     "folke/neodev.nvim",
     {
         "williamboman/mason.nvim",
-        opts = {
-            ensure_installed = {
-                "sumneko_lua",
-                "rust_analyzer",
-            }
-        }
+        build = ":MasonUpdate", -- :MasonUpdate updates registry contents
     },
     {
         "neovim/nvim-lspconfig",
@@ -60,6 +55,20 @@ return {
 
             require("lspconfig").kotlin_language_server.setup({})
         end
+    },
+    {
+        "simrat39/rust-tools.nvim",
+        opts = {
+            server = {
+                on_attach = function()
+                    vim.api.nvim_create_autocmd("BufWritePre", {
+                        callback = function()
+                            vim.lsp.buf.format()
+                        end
+                    })
+                end
+            }
+        }
     },
     {
         "j-hui/fidget.nvim",
