@@ -2,7 +2,27 @@ return {
     "folke/neodev.nvim",
     {
         "williamboman/mason.nvim",
-        build = ":MasonUpdate", -- :MasonUpdate updates registry contents
+        opts = {},
+        run = ":MasonUpdate"
+    },
+    {
+        "williamboman/mason-lspconfig.nvim",
+        dependencies = {
+            "williamboman/mason.nvim"
+        },
+        opts = {
+            ensure_installed = {
+                "lua_ls",
+                "tsserver",
+                "eslint",
+                "cssls",
+                "texlab",
+                "gradle_ls",
+                "kotlin_language_server",
+                "sqlls",
+                "rust_analyzer",
+            }
+        }
     },
     {
         "neovim/nvim-lspconfig",
@@ -28,8 +48,8 @@ return {
             })
 
             require("lspconfig").tsserver.setup({
-                filetypes = { "typescript", "typescriptreact", "typescript.tsx" },
-                cmd = { "typescript-language-server", "--stdio" }
+                filetypes = { "javascript", "typescript", "typescriptreact", "typescript.tsx" },
+                cmd = { "typescript-language-server", "--stdio" },
             })
 
             require("lspconfig").eslint.setup({
@@ -40,6 +60,8 @@ return {
                     })
                 end
             })
+
+            require("lspconfig").cssls.setup({})
 
             require("lspconfig").texlab.setup({
                 texlab = {
@@ -54,6 +76,16 @@ return {
             })
 
             require("lspconfig").kotlin_language_server.setup({})
+
+            require("lspconfig").sqlls.setup({
+                on_attach = function()
+                    vim.api.nvim_create_autocmd("BufWritePre", {
+                        callback = function()
+                            vim.lsp.buf.format()
+                        end
+                    })
+                end
+            })
         end
     },
     {

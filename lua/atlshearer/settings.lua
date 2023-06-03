@@ -60,9 +60,6 @@ set signcolumn=yes
 autocmd CursorHold * lua vim.diagnostic.open_float(nil, { focusable = false })
 ]])
 
--- Auto Formatting
-vim.cmd [[autocmd BufWritePre * lua vim.lsp.buf.format()]]
-
 -- Set hight of the command window to zero
 vim.o.cmdheight = 0
 
