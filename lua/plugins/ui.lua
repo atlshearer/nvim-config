@@ -8,6 +8,9 @@ return {
             require("nvim-tree").setup({
                 view = {
                     width = 50
+                },
+                renderer = {
+                    group_empty = true
                 }
             })
         end
