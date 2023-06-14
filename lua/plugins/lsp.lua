@@ -75,7 +75,15 @@ return {
                 filetypes = { "groovy", "kotlin" }
             })
 
-            require("lspconfig").kotlin_language_server.setup({})
+            require("lspconfig").kotlin_language_server.setup({
+                on_attach = function(_, bufnr)
+                    vim.api.nvim_create_autocmd("BufWritePre", {
+                        callback = function()
+                            vim.lsp.buf.format()
+                        end
+                    })
+                end
+            })
 
             require("lspconfig").sqlls.setup({
                 on_attach = function()
