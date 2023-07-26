@@ -35,12 +35,6 @@ vnoremap("<C-/>", "<Plug>(comment_toggle_linewise_visual)")
 nnoremap("<leader>xx", "<cmd>TroubleToggle<CR>")
 nnoremap("<leader>xd", "<cmd>TroubleToggle document_diagnostics<CR>")
 
--- Telescope
-nnoremap("<leader>ff", "<cmd>Telescope find_files<CR>")
-nnoremap("<leader>fg", "<cmd>Telescope live_grep<CR>")
-nnoremap("<leader>fb", "<cmd>Telescope buffers<CR>")
-nnoremap("<leader>fh", "<cmd>Telescope help_tags<CR>")
-
 -- Language Server Hotkeys
 nnoremap("K", vim.lsp.buf.hover)
 nnoremap("<c-k>", vim.lsp.buf.signature_help)
