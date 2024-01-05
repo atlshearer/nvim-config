@@ -53,3 +53,6 @@ nnoremap("1gD", vim.lsp.buf.type_definition)
 vim.keymap.set("n", "<leader>m", function()
     require("telescope").extensions.monorepo.monorepo()
 end)
+
+-- Markdown Preview
+vim.keymap.set("n", "<leader>pm", "<Plug>MarkdownPreviewToggle", { desc = "Toggle Markdown Preview" })
