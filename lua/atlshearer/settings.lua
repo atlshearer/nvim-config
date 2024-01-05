@@ -90,3 +90,10 @@ vim.api.nvim_create_autocmd(
         end
     }
 )
+
+-- Add filetype for Tiltfiles
+vim.filetype.add({
+    filename = {
+        ["Tiltfile"] = "python"
+    }
+})
