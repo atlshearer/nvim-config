@@ -11,6 +11,9 @@ return {
                 },
                 renderer = {
                     group_empty = true
+                },
+                git = {
+                    timeout = 6000
                 }
             })
         end
