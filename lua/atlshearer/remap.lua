@@ -28,8 +28,10 @@ nnoremap("<leader>9", "<cmd>BufferGoto 9<CR>")
 -- Comment Line
 nnoremap("<C-_>", "<Plug>(comment_toggle_linewise_current)")
 nnoremap("<C-/>", "<Plug>(comment_toggle_linewise_current)")
+nnoremap("<leader>c", "<Plug>(comment_toggle_linewise_current)")
 vnoremap("<C-_>", "<Plug>(comment_toggle_linewise_visual)")
 vnoremap("<C-/>", "<Plug>(comment_toggle_linewise_visual)")
+vnoremap("<leader>c", "<Plug>(comment_toggle_linewise_visual)")
 
 -- Trouble Toggle
 nnoremap("<leader>xx", "<cmd>TroubleToggle<CR>")
