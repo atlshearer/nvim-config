@@ -1,41 +1,63 @@
 return {
-    { "nvim-treesitter/playground", cmd = "TSPlaygroundToggle" },
-
-    {
-        "mfussenegger/nvim-treehopper",
-        keys = { { "m", mode = { "o", "x" } } },
-        config = function()
-            vim.cmd([[
-        omap     <silent> m :<C-U>lua require('tsht').nodes()<CR>
-        xnoremap <silent> m :lua require('tsht').nodes()<CR>
-      ]])
-        end,
-    },
-
-    {
-        "nvim-treesitter/nvim-treesitter-context",
-        event = "BufReadPre",
-        config = true,
-    },
-
     {
         "nvim-treesitter/nvim-treesitter",
+        branch = "main",
+        lazy = false,
+        build = ":TSUpdate",
         config = function()
-            require("nvim-treesitter.configs").setup({
-                ensure_installed = {
-                    "astro",
+            require("nvim-treesitter").install({
+                "bash",
+                "c",
+                "cmake",
+                "cpp",
+                "css",
+                "gitignore",
+                "diff",
+                "go",
+                "graphql",
+                "html",
+                "http",
+                "java",
+                "javascript",
+                "jsdoc",
+                "jsonc",
+                "kotlin",
+                "latex",
+                "lua",
+                "markdown",
+                "markdown_inline",
+                "php",
+                "python",
+                "query",
+                "regex",
+                "rust",
+                "scss",
+                "sql",
+                "svelte",
+                "toml",
+                "tsx",
+                "typescript",
+                "vim",
+                "vue",
+                "wgsl",
+                "yaml",
+                "wgsl",
+                "json",
+                "markdown",
+                "terraform",
+            })
+
+            vim.api.nvim_create_autocmd('FileType', {
+                pattern = {
                     "bash",
                     "c",
                     "cmake",
-                    -- "comment", -- comments are slowing down TS bigtime, so disable for now
                     "cpp",
                     "css",
-                    "diff",
-                    "fish",
                     "gitignore",
+                    "diff",
                     "go",
                     "graphql",
-                    -- "help",
                     "html",
                     "http",
                     "java",
@@ -47,11 +69,6 @@ return {
                     "lua",
                     "markdown",
                     "markdown_inline",
-                    "meson",
-                    "ninja",
-                    "nix",
-                    "norg",
-                    "org",
                     "php",
                     "python",
                     "query",
@@ -60,33 +77,25 @@ return {
                     "scss",
                     "sql",
                     "svelte",
-                    "teal",
                     "toml",
                     "tsx",
                     "typescript",
-                    "vhs",
+                    "typescriptreact",
                     "vim",
                     "vue",
                     "wgsl",
                     "yaml",
-                    -- "wgsl",
+                    "wgsl",
                     "json",
-                    -- "markdown",
+                    "markdown",
+                    "terraform",
                 },
-                matchup = {
-                    enable = true,
-                },
-                highlight = {
-                    enable = true,
-                    additional_vim_regex_highlighting = false
-                },
-                rainbow = {
-                    enable = true,
-                    extended_mode = true,
-                    max_file_lines = nil,
-                }
+                callback = function() vim.treesitter.start() end,
             })
+
+            vim.wo.foldmethod = 'expr'
+            vim.wo.foldexpr = 'v:lua.vim.treesitter.foldexpr()'
+            vim.wo.foldlevel = 99
         end
     },
-    "HiPhish/nvim-ts-rainbow2"
 }

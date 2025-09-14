@@ -19,22 +19,10 @@ return {
         end
     },
     {
-        "imNel/monorepo.nvim",
-        config = function()
-            require("monorepo").setup({
-                -- Your config here!
-            })
-        end,
-        dependencies = { "nvim-telescope/telescope.nvim", "nvim-lua/plenary.nvim" },
-    },
-    {
         "nvim-lualine/lualine.nvim",
         opts = {
             options = {
-                -- ignore_focus = {"NvimTree", "packer", "[No Name]"},
                 disabled_filetypes = {
-                    --    "NvimTree", "packer", "[No Name]"
-                    -- winbar = { "NvimTree" },
                     statusline = {
                         "NvimTree"
                     }
@@ -68,16 +56,16 @@ return {
             },
         }
     },
-    {
-        "folke/drop.nvim",
-        event = "VimEnter",
-        opts = {
-            theme = "snow",
-            screensaver = 1000 * 60 * 1,
-            max = 100,
-            interval = 1000,
-        }
-    },
+    -- {
+    --     "folke/drop.nvim",
+    --     event = "VimEnter",
+    --     opts = {
+    --         theme = "snow",
+    --         screensaver = 1000 * 60 * 1,
+    --         max = 100,
+    --         interval = 1000,
+    --     }
+    -- },
     {
         "folke/which-key.nvim",
         config = function()
@@ -86,16 +74,4 @@ return {
             require("which-key").setup({})
         end
     },
-    {
-        "iamcco/markdown-preview.nvim",
-        cmd = { "MarkdownPreviewToggle", "MarkdownPreview", "MarkdownPreviewStop" },
-        build = "cd app && npm install",
-        init = function()
-            vim.g.mkdp_filetypes = { "markdown" }
-            vim.g.mkdp_auto_start = 1
-            vim.g.mkdp_auto_close = 0
-            vim.g.mkdp_combine_preview = 1
-        end,
-        ft = { "markdown" }
-    }
 }

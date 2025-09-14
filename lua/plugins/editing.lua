@@ -86,7 +86,7 @@ return {
     -- Yes
     "hrsh7th/vim-vsnip",
 
-    "github/copilot.vim",
+    -- "github/copilot.vim",
 
     -- Automatically adding brackets
     {
