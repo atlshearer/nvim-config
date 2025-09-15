@@ -31,11 +31,6 @@ nnoremap("g0", vim.lsp.buf.document_symbol)
 nnoremap("gW", vim.lsp.buf.workspace_symbol)
 nnoremap("1gD", vim.lsp.buf.type_definition)
 
--- Monorepo
-vim.keymap.set("n", "<leader>m", function()
-    require("telescope").extensions.monorepo.monorepo()
-end)
-
 -- Markdown Preview
 vim.keymap.set("n", "<leader>pm", "<Plug>MarkdownPreviewToggle", { desc = "Toggle Markdown Preview" })
 
